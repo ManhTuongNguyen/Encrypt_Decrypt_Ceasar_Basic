@@ -22,6 +22,7 @@ namespace ATBMTT_B1_Ceasar
             this.tbx_needEncrypt.ForeColor = Color.Black;
             if (tbx_needEncrypt.Text.Trim() != "" && tbx_needEncrypt.Text != "")
             {
+                //Chỉ hiện nút Mã Hóa trong trường hợp chuỗi cần mã hóa thỏa mãn
                 this.btn_Encrypt.Visible = true;
             }
             else
@@ -35,8 +36,8 @@ namespace ATBMTT_B1_Ceasar
             int key;
             var mahoa = new CeasarHelper();
             //MessageBox.Show(mahoa.chuoiMaHoa.Length.ToString());
-            MessageBox.Show(mahoa.chuoiMaHoa[0].ToString());
-            MessageBox.Show(mahoa.chuoiMaHoa[mahoa.chuoiMaHoa.Length - 1].ToString(), (mahoa.chuoiMaHoa.Length - 1).ToString());
+            //MessageBox.Show(mahoa.chuoiMaHoa[0].ToString());
+            //MessageBox.Show(mahoa.chuoiMaHoa[mahoa.chuoiMaHoa.Length - 1].ToString(), (mahoa.chuoiMaHoa.Length - 1).ToString());
             try
             {
                 key = int.Parse(tbx_keyEncrypt.Text);

@@ -20,6 +20,7 @@ namespace CeasarApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Tự tích radiobuton Mã Hóa khi load form
             rbtn_mahoa.Checked = true;
             rbtn_giaima.Checked = false;
         }
@@ -28,6 +29,7 @@ namespace CeasarApp
         {
             if (rbtn_mahoa.Checked)
             {
+                //Bỏ tích radiobutton giải mã khi radiobutton mã hóa đc tích
                 rbtn_giaima.Checked = false;
             }
         }
@@ -37,6 +39,7 @@ namespace CeasarApp
 
             if (rbtn_giaima.Checked)
             {
+                //Bỏ tích radiobutton mã hóa khi radiobutton giải mã đc tích
                 rbtn_mahoa.Checked = false;
             }
         }
@@ -45,6 +48,7 @@ namespace CeasarApp
         {
             if (tbx_key.Text.Trim() != "" && tbx_key.Text != "")
             {
+                //Chỉ hiện nút thực hiện khi textbox path có ký tự
                 btn_perform.Visible = true;
             }
             else
@@ -55,17 +59,21 @@ namespace CeasarApp
 
         private void btn_search_Click(object sender, EventArgs e)
         {
+            //khởi tạo đối tượng dùng để mở file
             OpenFileDialog opf = new OpenFileDialog();
             if (rbtn_mahoa.Checked)
             {
+                //filter file extension
                 opf.Filter = "Text file (*.txt) | *.txt";
             }
             else
             {
+                //filter file extension
                 opf.Filter = "Text file (*.ceasear) | *.ceasar";
             }
             if (opf.ShowDialog() == DialogResult.OK)
             {
+                //Ghi file name đã chọn ra ô textbox path
                 tbx_path.Text = opf.FileName;
             }
         }
@@ -77,6 +85,7 @@ namespace CeasarApp
             if (!File.Exists(tbx_path.Text))
             {
                 MessageBox.Show("Tệp tin không tồn tại!\nThử lại!");
+                return;
             }
             try
             {
@@ -114,17 +123,21 @@ namespace CeasarApp
             {
                 ketqua = cH.giaiMa(ndung, key_decrypt_encrypt);
             }
+            //Khởi tạo đối tượng để lưu file
             SaveFileDialog sFD = new SaveFileDialog();
             if (rbtn_giaima.Checked)
             {
+                //filter file extension
                 sFD.Filter = "Text file (*.txt) | *.txt";
             }
             else
             {
+                //filter file extension
                 sFD.Filter = "Text file (*.ceasar) | *.ceasar";
             }
             if (sFD.ShowDialog() == DialogResult.OK)
             {
+                //Ghi hết dữ liệu từ chuỗi ketqua ra file đã chọn
                 File.WriteAllText(sFD.FileName, ketqua);
                 MessageBox.Show("Hoàn thành!");
             }
